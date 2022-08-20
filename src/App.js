@@ -29,7 +29,7 @@ class App extends Component {
 			<div className="App">
 				<NavBar></NavBar>
 				<div className='container'>
-					<Users></Users>
+					< Users loading={this.state.loading} users={this.state.users} />
 				</div>
 			</div>
 		);

@@ -7,8 +7,9 @@ function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
-
-			<Users></Users>
+			<div className='container'>
+				<Users></Users>
+			</div>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

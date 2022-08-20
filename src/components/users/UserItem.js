@@ -3,13 +3,6 @@ import React, { Component } from 'react';
 
 class UserItem extends Component {
 
-	// state = {
-	// 	id: 'id',
-	// 	login: 'myUser',
-	// 	avatar_url: 'https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png',
-	// 	html_url: 'https://github.com/tspeu'
-	// }
-
 	render() {
 		const {login, avatar_url, html_url} = this.props.user;
     return (

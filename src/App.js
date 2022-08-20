@@ -1,13 +1,14 @@
 // import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/layouts/NavBar';
-import UserItem from './components/users/UserItem';
+import Users from './components/users/Users';
 
 function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
-			<UserItem></UserItem>
+
+			<Users></Users>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

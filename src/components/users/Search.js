@@ -11,6 +11,7 @@ class Search extends Component {
 		searchUsers: PropTypes.func.isRequired,
 		clearUsers: PropTypes.func.isRequired,
 		showClear: PropTypes.bool.isRequired,
+		setAlert: PropTypes.func.isRequired,
 	}
 
 	onSearch = (event) => {
@@ -24,11 +25,14 @@ no se puede tener un onchange separado
 
 onSubmit = e => {
 	e.preventDefault();
-	console.log('submit',this.state.search);
-	this.props.searchUsers(this.state.search);
-	this.setState({ search: ''});
+	 if (this.state.search === '') {
+		this.props.setAlert('Please enter a name', 'warning');
+		return
+	 } 
+		 console.log('submit',this.state.search);
+		 this.props.searchUsers(this.state.search);
+		 this.setState({ search: ''});
 }
-
 
 	render() {
 		const {showClear, clearUsers} = this.props;

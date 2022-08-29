@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { Component } from 'react';
 import './App.css';
 import NavBar from './components/layouts/NavBar';
+import Alert from './components/layouts/Alert';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import axios from 'axios'
@@ -13,7 +14,8 @@ const URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_GITH
 class App extends Component {
 	state = {
 		users: [],
-		loading: false
+		loading: false,
+		alert: null,
 	}
 
 	// async componentDidMount  () {
@@ -50,6 +52,12 @@ class App extends Component {
 		})
 	}
 
+	// show alert
+	showAlert = (msm, type) => {
+		this.setState( {alert : {msm, type} });
+		setTimeout(() => this.setState({alert: null}), 3000 );
+	}
+
 	render() {
 		const {users, loading } = this.state;
 
@@ -57,11 +65,13 @@ class App extends Component {
 			<div className="App">
 				<NavBar ></NavBar>
 				<div className='container'>
-						<Search 
-						searchUsers= {this.searchUsers}
-						clearUsers= {this.clearUsers}
-						showClear= {users.length > 0 ? true : false }
-						/>
+					<Alert alert={this.state.alert}/>
+					<Search 
+					searchUsers= {this.searchUsers}
+					clearUsers= {this.clearUsers}
+					setAlert= {this.showAlert}
+					showClear= {users.length > 0 ? true : false }
+					/>
 					< Users loading={loading} users={users} />
 				</div>
 			</div>

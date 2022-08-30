@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/layouts/NavBar';
 import Alert from './components/layouts/Alert';
@@ -62,19 +62,30 @@ class App extends Component {
 		const {users, loading } = this.state;
 
 		return (
-			<div className="App">
-				<NavBar ></NavBar>
-				<div className='container'>
-					<Alert alert={this.state.alert}/>
-					<Search 
-					searchUsers= {this.searchUsers}
-					clearUsers= {this.clearUsers}
-					setAlert= {this.showAlert}
-					showClear= {users.length > 0 ? true : false }
-					/>
-					< Users loading={loading} users={users} />
+			<Router>
+				<div className="App">
+					<NavBar ></NavBar>
+					<div className='container'>
+						<Alert alert={this.state.alert}/>
+				
+							<Route path='/' 
+								render={props => (
+								<Fragment>
+									<Search 
+									searchUsers= {this.searchUsers}
+									clearUsers= {this.clearUsers}
+									setAlert= {this.showAlert}
+									showClear= {users.length > 0 ? true : false }
+									/>
+									< Users loading={loading} users={users} />
+								</Fragment>
+							)} />
+					
+						
+					</div>
 				</div>
-			</div>
+
+			</Router>
 		);
 	}
 	

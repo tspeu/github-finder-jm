@@ -32,6 +32,9 @@ onSubmit = e => {
 		 console.log('submit',this.state.search);
 		 this.props.searchUsers(this.state.search);
 		 this.setState({ search: ''});
+		 const elem = document.querySelector('[name="search"]')?.value;
+		 console.log(elem)
+		//  document.querySelector('[name="search"]')?.innerHTML = '';
 }
 
 	render() {

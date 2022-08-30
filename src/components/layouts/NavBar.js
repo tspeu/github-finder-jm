@@ -1,6 +1,6 @@
 import React from "react";
 import PropTytes from "prop-types";
-import { Link , NavLink} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const NavBar = ({icon,title}) => {
 	return (

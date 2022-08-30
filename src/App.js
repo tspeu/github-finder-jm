@@ -1,10 +1,11 @@
 import { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter  as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/layouts/NavBar';
 import Alert from './components/layouts/Alert';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import About from './components/pages/About';
 import axios from 'axios'
 
 const URL = `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
@@ -64,24 +65,25 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="App">
-					<NavBar ></NavBar>
+					<NavBar/>
 					<div className='container'>
-						<Alert alert={this.state.alert}/>
-				
-							<Route path='/' 
+					<Alert alert={this.state.alert}/>
+					<Switch>
+							<Route exact  path='/' 
 								render={props => (
-								<Fragment>
-									<Search 
-									searchUsers= {this.searchUsers}
-									clearUsers= {this.clearUsers}
-									setAlert= {this.showAlert}
-									showClear= {users.length > 0 ? true : false }
-									/>
-									< Users loading={loading} users={users} />
-								</Fragment>
-							)} />
-					
-						
+									<Fragment>
+										<Search 
+										searchUsers= {this.searchUsers}
+										clearUsers= {this.clearUsers}
+										setAlert= {this.showAlert}
+										showClear= {users.length > 0 ? true : false }
+										/>
+										< Users loading={loading} users={users} />
+									</Fragment>
+								)} 
+								/>
+							<Route exact path='/about' component={About} />					
+						</Switch>
 					</div>
 				</div>
 

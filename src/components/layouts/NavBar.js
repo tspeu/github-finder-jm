@@ -8,6 +8,14 @@ const NavBar = ({icon,title}) => {
 				<i className={icon}></i>
 				<span className="p"> {title} </span>
 			</h1>
+			<ul>
+				<li>
+					<a href="/about">About</a>
+				</li>
+				<li>
+					<a href="/">Home</a>
+				</li>
+			</ul>
 		</nav>
 	);
 };
